@@ -5,32 +5,32 @@
 
 typedef char ElementType;
 
-//º¢×Ó½Úµã
+//å­©å­èŠ‚ç‚¹
 typedef struct CTNode
 {
-    int child;  //º¢×Ó½ÚµãµÄÏÂ±ê
-    struct CTNode *next;//Ö¸ÏòÏÂÒ»¸öº¢×Ó½ÚµãµÄÖ¸Õë
+    int child;  //å­©å­èŠ‚ç‚¹çš„ä¸‹æ ‡
+    struct CTNode *next;//æŒ‡å‘ä¸‹ä¸€ä¸ªå­©å­èŠ‚ç‚¹çš„æŒ‡é’ˆ
 }*hildPtr;
 
-//±íÍ·½á¹¹
+//è¡¨å¤´ç»“æ„
 typedef struct
 {
-    ElementType data;     //´æ·ÅÔÚÊıÖĞ½ÚµãµÄÊı¾İ
-    int parent;            //´æ·ÅË«Ç×µÄÎ»ÖÃÏÂ±ê
-    ChildPtr firstChild;   //Ö¸ÏòµÚÒ»¸öº¢×ÓµÄÖ¸Õë
+    ElementType data;     //å­˜æ”¾åœ¨æ•°ä¸­èŠ‚ç‚¹çš„æ•°æ®
+    int parent;            //å­˜æ”¾åŒäº²çš„ä½ç½®ä¸‹æ ‡
+    ChildPtr firstChild;   //æŒ‡å‘ç¬¬ä¸€ä¸ªå­©å­çš„æŒ‡é’ˆ
 }CTBox;
 
 
-//Ê÷½á¹¹
+//æ ‘ç»“æ„
 typedef struct
 {
-    CTBox nodes[MAX_TREE_SIZE];//½ÚµãÊı×é
-    int r,n;
+    CTBox nodes[MAX_TREE_SIZE];//èŠ‚ç‚¹æ•°ç»„
+    int r,n;    //rç”¨äºå­˜æ”¾èŠ‚ç‚¹ä¸‹æ ‡,nä¸ºæ ‘çš„å®¹é‡
 }
 */
 
 /*
-//¶ş²æÁ´±í
+//äºŒå‰é“¾è¡¨
 typedef struct BiTNode
 {
         ElementType data;
