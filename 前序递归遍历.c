@@ -34,7 +34,7 @@ CreateBiTree(BiTree *T)
 //遍历二叉树
 PreOrderTraverse(BiTree T,int level)
 {
-    if(T)
+    if(T)     //当T不为null时继续遍历
     {
         visit(T->data,level);
         PreOrderTraverse(T->lChild,level+1);
