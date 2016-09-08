@@ -1,0 +1,154 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+//线性表元素的合并
+//La表示A集合,Lb表示b集合
+/*
+void unionL(List *La,List Lb)
+{
+    int La_len,Lb_len,i;
+    Element e;
+    La_len=ListLength(*La);
+    Lb_len=ListLength(Lb);
+    for(int i=1;i<=Lb_len;i++)
+    {
+        GetElem(Lb,i,&e);
+        if(!LocateElem(*La,e))
+        {
+            ListInsert(La,++La_len,e);
+        }
+    }
+}
+*/
+//顺序存储结构代码
+#define MAXSIZE 20
+typedef int ElemType;
+typedef struct 
+{
+    ElemType data[MAXSIZE];
+    int length;   //线性表当前长度
+}SqList;
+
+//************get操作*********************
+#define Ok 1
+#define ERROR 0
+typedef int Status;
+//Status是函数类型，其值是函数结果状态代码，如OK等
+//初始条件:顺序线性表L已存在，1<=i<=ListLength(L)
+//操作结果:用e返回L中第i个数据元素的值
+Status GetElem(SqList L,int i,ElemType *e)
+{
+    if(L.length==0||i<1||i>L.length)
+    {
+        return ERROR;
+    }
+    *e=L.data[i-1];
+    return OK;  //返回是否获取成功
+}
+//*************************************************
+//插入操作
+//初始条件:顺序线性表L已存在，1<=i<=ListLength(L)
+//操作结果:在L中第i个位置之前插入新元素e,L长度+1
+Status ListInsert(SqList *L,int i,ElemType e)
+{
+    int k;
+    if(L->length==MAXSIZE)   //顺序线性表已经满了
+    {
+        return ERROR;
+    }
+    if(i<1||i>L->length+1)   //当i不在范围内时
+    {
+        return ERROR;
+    }
+    if(i<=L->length)    //若插入数据不在表尾
+    {
+        //将要插入位置后元素向后移动一位
+        for(k=l->length-1;k>=i-1;k--)
+        {
+            L->data[k+1]=L->data[k];
+        }
+    }
+    L->data[i-1]=e;//将新元素插入
+    L-length++;
+    return OK; 
+}
+
+//初始条件:顺序线性表已存在，1<=i<=ListLength(L)
+//操作结果:删除L的第i个数据元素,并用e返回其值,L的长度-1
+Status ListDelete(SqList *L,int i,ElemType *e)
+{
+    int k;
+    if(L->length==0)
+    {
+        return ERROR;
+    }
+    if(i<1||i>L->length)
+    {
+        return ERROR;
+    }
+    *e=L->data[i-1];
+    if(i<L->length)  //当小于数组长度时，依次向后赋值
+    {
+        for(k=i;k<L->length;k++)
+        {
+            L->data[k-1]=L->data[k];
+        }
+    }
+    L->length--;
+    return Ok;
+}
+//适合元素个数比较固定，不经常插入和删除元素
+//更多的是存取数据的应用
+/*
+无需为表示元素之间的逻辑关系而增加额外的存储空间
+可以快速的存取表中任意位置的元素
+
+当线性表长度变化大时，难以确定存储空间的容量
+容易造成存储空间的碎片:申请的空间没有被完全利用
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+int main()
+{
+    printf("Hello world!\n");
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
