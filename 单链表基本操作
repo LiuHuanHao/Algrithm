@@ -1,0 +1,170 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Node
+{
+    ElemType data;   //数据域
+    struct Node* next;  //指针域
+}Node;
+
+typedef struct Node* LinkList;   //定义一个指针类型的节点
+
+//查找操作
+//初始条件：链表L已存在,i<=i<=L.ListLength(L)
+//操作结果:用e返回L中第i个元素的值
+//最坏时间复杂度O(n)
+Status GetElem(LinkList L,int i,ElemType *e)
+{
+    int j;
+    LinkList p;    //定义一个结构指针
+    p=L->next;    //指向第一个节点
+    j=1;
+    while(p&&j<i)    //当p为null时或索引次数满时结束
+    {
+        p=p->next;   //索引下一个并且次数加一
+        ++j;
+    }
+    if(!p||j>i)     //当j>i不满足条件退出  i==0
+    {
+        return ERROR;
+    }
+    *e=p->data;
+    return OK;
+}
+
+
+//插入操作
+Status ListInsert(LinkList *L,int i,ElemType e)
+{
+    int j;
+    LinkList p,s;
+    P=(*L)->next;
+    j=1;
+    while(p&&j<i)
+    {
+        p=p->next;
+        j++
+    }
+    if(!p||j>i)
+    {
+        return ERROR;
+    }
+    s=(LinkList)malloc(sizeof(Node));
+    s->data=e;
+    s->next=p->next;   //注意这两操作不能调换
+    p->next=s;
+    return OK;
+}
+
+//删除操作
+Status ListDelete(LinkList *L,int i,ElemType *e)
+{
+    int j;
+    LinkList p,q;
+    p=(*L)->next;
+    j=1;
+    while(p&&j<i)
+    {
+        p=p->next;
+        ++j;
+    }
+    if(!p||j>i)
+    {
+        return ERROR;
+    }
+    q=p->next;
+    p->next=q->next;
+    *e=q->data;
+    free(q);     //释放内存
+    return OK;
+}
+ //链表整表删除
+Status ClearList(LinkList *L)
+{
+    LinkList p,q;
+    p=(*L)->next;
+    while(p)     //当p为NULL时结束循环
+    {
+        q=p->next;  //q用于暂时存放索引元素
+        free(p);
+        p=q;
+    }
+    (*L)->next=NULL;  //将表头指向null,结束清理
+    return OK;
+}
+
+//头插法建立单链表实例，此方法头指针最后指向最后一个元素
+//生成的节点次序相反！！！
+void CreateListHead(LinkList *L,int n)
+{
+    LinkList p;
+    int i;
+    srand(time(0));    //初始化随机种子
+    *L=(LinkList)malloc(sizeof(Node));
+    (*L)->next=NULL;
+    for(i=0;i<n;i++)
+    {
+        p=(LinkList)malloc(sizeof(Node));
+        p->data=rand()%100+1;
+        p->next=(*L)->next;   //节点指针指向头指针后面的元素
+        (*L)->next=p;        //头指针指向新创建的节点
+    }
+}
+
+//尾插法建立单链表演示
+void CreateListTail(LinkList *L,int n)
+{
+    LinkList p,r;
+    int i;
+    srand(time(0));    
+    *L=(LinkList)malloc(sizeof(Node));
+    r=*L;  //用于存储头节点
+    for(int i=0;i<n;i++)
+    {
+        p=(Node*)malloc(sizeof(Node));
+        p->data=rand()%100+1;    //生成1到100的数字
+        r->next=p;
+        r=p;          //将标志节点向后移动，继续存放数据
+    }
+    r-next=NULL;    
+}
+
+
+/*
+    插入与删除顺序存储与链表的事件复杂度都是n，但是需要
+    插入多个数据时，顺序结构需要多次移动，而
+    链表只需要移动一次，提高了效率
+    顺序存储结构需要预分配空间，分大了容易造成浪费
+    分小了容易造成溢出
+
+
+*/
+
+
+int main()
+{
+    printf("Hello world!\n");
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
