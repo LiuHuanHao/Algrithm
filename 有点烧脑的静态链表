@@ -1,0 +1,83 @@
+//线性表静态链表存储结构
+#define MAXSIZE 1000
+typedef struct
+{
+    ElemType data;
+    int cur;   //游标
+}Component,StaticLinkList[MAXSIZE];
+
+//对静态链表进行初始化相当于初始化数组
+Status InitList(StaticLinkList space)
+{
+    int i;
+    for(i=0;i<MAXSIZE-1;i++)
+    {
+        space[i].cur=i+1;        //创建一个数组，下标为0的元素赋值为1，最后一个元素赋值为0
+    }
+    space[MAXSIZE-1].cur=0;
+    return OK;
+}
+
+//获得空闲分量的下标
+int Malloc_SLL(StaticLinkList space)
+{
+    int i=space[0].cur;    //零元素游标用于存放空闲数组元素
+    if(space[0].cur)     //？？？？？
+    {
+        space[0].cur=space[i].cur;    //存入新元素后将空闲数组元素的游标加一
+        //把他下一个分量用来作为备用
+    }
+    return i;            //返回要存放数组元素下标
+}
+
+//在静态链表L中第i个元素之间插入新的元素e
+Status ListInsert(StaticLinkList L,int i,ElemType e)
+{
+    int j,k,l;
+    k=MAXSIZE-1;
+    if(i<1||i>ListLength(L)+1)       //此处应该加上判断是否添加超过预定长度的条件?????????
+    {
+        return ERROR;
+    }
+    j=Malloc_SLL(L);
+    if(j)
+    {
+        L[j].data=e;    //取出空白数组单元
+        for(l=1;l<=i-1;l++)
+        {
+            k=L[k].cur;      //找出要存放的序列的前一个元素下标
+        }
+        L[j].cur=L[k].cur;     //把新元素的游标设置为0，表示元素数组存放的元素到这里已经结束了
+        L[k].cur=j;         //把新元素的前一个元素游标指向新元素的下标，用于索引
+        return OK;
+    }
+    return ERROR;
+}
+
+/*
+一开始下标为0的元素游标是为了显示空白的数组元素下标，当全部存满时是用于存放第一个有数据的元素的下标
+一开始最大的下标的游标是为了记录第一个有元素的数组的下标，但元素满了时不再满足此条件
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
