@@ -1,0 +1,88 @@
+package haha;
+
+import java.util.Scanner;
+
+import javafx.collections.ListChangeListener.Change;
+
+public class StudentTest {
+	public static void main(String[] args) {
+		int[] arr={24,69,80,57,13,88,12};
+		System.out.println("排序前:");
+		printArray(arr);
+		//第一次比较
+		/*for(int x=0;x<arr.length-1;x++)
+		{
+			if(arr[x]>arr[x+1])  //这里x+1，所以x最大不能为length-1
+			{
+				int temp=arr[x];
+				arr[x]=arr[x+1];
+				arr[x+1]=temp;
+			}
+		}
+		System.out.println("第一次排序后:");*/
+		/*for(int y=0;y<4;y++)
+		{
+			for(int x=0;x<arr.length-1-y;x++)
+			{
+				if(arr[x]>arr[x+1])
+				{
+					int temp=arr[x];
+					arr[x]=arr[x+1];
+					arr[x+1]=temp;
+				}
+			}
+		}*/
+		/*for(int y=0;y<arr.length-1;y++)
+		{
+			for(int x=0;x<arr.length-1-y;x++)
+			{
+				if(arr[x]>arr[x+1])
+				{
+					int temp=arr[x];
+					arr[x]=arr[x+1];
+					arr[x+1]=temp;
+				}
+			}
+		}*/
+		//由于可能有多个数组需要排序，所以需要写方法
+		bubbleSort(arr);
+		System.out.println("排序后:");
+		printArray(arr);
+	}
+	//冒泡排序
+	public static void bubbleSort(int[] arr)
+	{
+		for(int y=0;y<arr.length-1;y++)
+		{
+			for(int x=0;x<arr.length-1-y;x++) //每次冒泡后排序范围减一
+			{
+				if(arr[x]>arr[x+1])
+				{
+					int temp=arr[x];
+					arr[x]=arr[x+1];
+					arr[x+1]=temp;
+				}
+			}
+		}
+	}
+	
+	//遍历功能
+	public static void printArray(int[] arr)
+	{
+		System.out.print("[");
+		for(int x=0;x<arr.length;x++)
+		{
+			if(x==arr.length-1)
+				System.out.print(arr[x]);
+			else
+			{
+				System.out.print(arr[x]+", ");
+			}
+		}
+		System.out.println("]");
+	}
+}
+
+
+
+
