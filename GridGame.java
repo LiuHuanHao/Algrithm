@@ -1,7 +1,7 @@
 
 /**
- * ºÍÎª15µÄÆåÅÌÓÎÏ·£¬ÒªÇó´Ó1µ½9µÄ¾Å¸öÊı²»ÖØ¸´ÌîÈë3*3ÆåÅÌµÄ·½¸ñÖĞ¡£¸÷ĞĞ¸÷ÁĞ¼°¶Ô½ÇÏßºÍÎª15£¬
- * @author Áõ»Àå©
+ * å’Œä¸º15çš„æ£‹ç›˜æ¸¸æˆï¼Œè¦æ±‚ä»1åˆ°9çš„ä¹ä¸ªæ•°ä¸é‡å¤å¡«å…¥3*3æ£‹ç›˜çš„æ–¹æ ¼ä¸­ã€‚å„è¡Œå„åˆ—åŠå¯¹è§’çº¿å’Œä¸º15ï¼Œ
+ * @author åˆ˜ç„•æ¿ 
  *
  */
 public class GridGame {
@@ -10,24 +10,24 @@ public class GridGame {
 	int count=1;
 	public GridGame()
 	{
-		System.out.println("µ÷ÓÃÁË¹¹Ôìº¯Êı");
+		System.out.println("è°ƒç”¨äº†æ„é€ å‡½æ•°");
 		array=new int[3][3];
 	}
 	public void showGrid()
 	{
-		//System.out.println("µ÷ÓÃÁË´òÓ¡º¯Êı");
+		//System.out.println("è°ƒç”¨äº†æ‰“å°å‡½æ•°");
 		int i,j;
 		for(i=0;i<array.length;i++)
 		{
 			for(j=0;j<array[i].length;j++)
 			{
 				System.out.print(array[i][j]+" ");
-				//´òÓ¡Ò»ĞĞºó»»ĞĞ
+				//æ‰“å°ä¸€è¡Œåæ¢è¡Œ
 			}
 			System.out.println();
 		}
 		System.out.println();
-		//´òÓ¡Ò»¸ö±í¸ñºó»»ĞĞ
+		//æ‰“å°ä¸€ä¸ªè¡¨æ ¼åæ¢è¡Œ
 	}
 
 	private boolean datachecksumrow()
@@ -35,61 +35,61 @@ public class GridGame {
 	 int i,j;
 	 for(i=0;i<array.length;i++)
 	 {
-     int k=0;
-     //k±ØĞëµÚÒ»¸öforÑ­»·ÀïÃæÖµÁã£¬ÕâÑù²Å²»»áÔì³ÉkµÄÊı¾İµş¼Ó
-	 for(j=0;j<array[i].length;j++)
-	 k=k+array[i][j];
-	 if(k!=15)
-	//µ±Ò»ĞĞÊı¾İÖ®ºÍ²»Îª15ÊÇ·µ»Øfalse
-	 return false;
+     		int k=0;
+     		//kå¿…é¡»ç¬¬ä¸€ä¸ªforå¾ªç¯é‡Œé¢å€¼é›¶ï¼Œè¿™æ ·æ‰ä¸ä¼šé€ æˆkçš„æ•°æ®å åŠ 
+	 	for(j=0;j<array[i].length;j++)
+	 		k=k+array[i][j];
+			if(k!=15)
+				//å½“ä¸€è¡Œæ•°æ®ä¹‹å’Œä¸ä¸º15æ˜¯è¿”å›false
+				 return false;
 	 }
-	 return true;
+	 	return true;
 	 }
 	 private boolean datachecksumcolumn()
 	 {
-	 int i,j;
-	 for(i=0;i<array.length;i++)
-	 {
-	 int k=0;
-	 for(j=0;j<array[i].length;j++) 
-	 k+=array[j][i];
-	 if(k!=15)
-	//µ±Ò»ÁĞÊı¾İ²»Îª15Ê±·µ»Øfalse
-	 return false;
+	 	int i,j;
+		 for(i=0;i<array.length;i++)
+	 	 {
+	 		int k=0;
+		 	for(j=0;j<array[i].length;j++) 
+	 			k+=array[j][i];
+			 if(k!=15)
+				//å½“ä¸€åˆ—æ•°æ®ä¸ä¸º15æ—¶è¿”å›false
+			 	return false;
 	 }
-	 return true;
+		return true;
 	 }
 	 private boolean dataCheck()
 	 {
-	 if(!datachecksumrow())
-	//¼ì²éĞĞµÄÊı¾İÖ®ºÍÊÇ·ñÎª15
-	 return false;
-	 if(!datachecksumcolumn())
-    //¼ì²éÁĞµÄĞĞÊıÖ®ºÍÊÇ·ñÎª15
-	 return false;
-	 if(array[0][0]+array[1][1]+array[2][2]!=15)
-	//¼ì²é¶Ô½ÇÏßÖ®ºÍÊÇ·ñÎª15
-	 return false;
-	 if(array[0][2]+array[1][1]+array[2][0]!=15)
-	 return false;
-	 return true;
+		if(!datachecksumrow())
+			//æ£€æŸ¥è¡Œçš„æ•°æ®ä¹‹å’Œæ˜¯å¦ä¸º15
+	 		return false;
+	 	if(!datachecksumcolumn())
+    			//æ£€æŸ¥åˆ—çš„è¡Œæ•°ä¹‹å’Œæ˜¯å¦ä¸º15
+	 		return false;
+	 	if(array[0][0]+array[1][1]+array[2][2]!=15)
+			//æ£€æŸ¥å¯¹è§’çº¿ä¹‹å’Œæ˜¯å¦ä¸º15
+	 		return false;
+	 	if(array[0][2]+array[1][1]+array[2][0]!=15)
+	 		return false;
+	 	return true;
 	 }
 	
 	public void arrage()
 	{
-		System.out.println("µ÷ÓÃÁËÇî¾Ùº¯Êı");
-		int sum=1;//sumÓÃÓÚ±ê¼Ç·ûºÏÌõ¼şÇé¿öµÄ¸öÊı
-		//Ç¶Ì×forÑ­»·Éú³É9¸öÊı¾İ²»Í¬µÄ1-9µÄÊı×Ö
+		System.out.println("è°ƒç”¨äº†ç©·ä¸¾å‡½æ•°");
+		int sum=1;//sumç”¨äºæ ‡è®°ç¬¦åˆæ¡ä»¶æƒ…å†µçš„ä¸ªæ•°
+		//åµŒå¥—forå¾ªç¯ç”Ÿæˆ9ä¸ªæ•°æ®ä¸åŒçš„1-9çš„æ•°å­—
 		for(int i=1;i<=9;i++)
 		{
 			for(int j=1;j<=9;j++)
 			{
 				if(i==j)
 					continue;
-				//µ±Êı¾İÏàÍ¬Ê±·µ»Ø¼ÌĞøÑ­»·
+				//å½“æ•°æ®ç›¸åŒæ—¶è¿”å›ç»§ç»­å¾ªç¯
 				for(int k=1;k<=9;k++)
 				{
-//					System.out.println("º¯Êıµ½´ïkÕâÀï");
+//					System.out.println("å‡½æ•°åˆ°è¾¾kè¿™é‡Œ");
 					if(k==j||k==i)
 						continue;
 					for(int l=1;l<=9;l++)
@@ -98,7 +98,7 @@ public class GridGame {
 							continue;
 						for(int m=1;m<=9;m++)
 						{
-							//System.out.println("º¯Êıµ½´ïkÕâÀï");
+							//System.out.println("å‡½æ•°åˆ°è¾¾kè¿™é‡Œ");
 							if(m==k||m==j||m==l||m==i)
 								continue;
 							for(int n=1;n<=9;n++)
@@ -107,12 +107,12 @@ public class GridGame {
 									continue;
 								for(int o=1;o<=9;o++)
 								{
-									//System.out.println("º¯Êıµ½´ïoÕâÀï");
+									//System.out.println("å‡½æ•°åˆ°è¾¾oè¿™é‡Œ");
 									if(o==n||o==m||o==j||o==i||o==l||o==k)
 										continue;
 									for(int p=1;p<=9;p++)
 									{	
-										//System.out.println("º¯Êıµ½´ïpÕâÀï");
+										//System.out.println("å‡½æ•°åˆ°è¾¾pè¿™é‡Œ");
 										if(p==n||p==m||p==j||p==i||p==l||p==k||p==o)
 											continue;
 										for(int q=1;q<=9;q++)
@@ -128,15 +128,15 @@ public class GridGame {
 											array[2][0]=o;
 											array[2][1]=p;
 											array[2][2]=q;
-											//System.out.println("²¼¾Ö½áÊø");
+											//System.out.println("å¸ƒå±€ç»“æŸ");
 											//showGrid();
 											if(dataCheck())
 											{
-												System.out.println("Æ¥Åä³É¹¦");
+												System.out.println("åŒ¹é…æˆåŠŸ");
 												System.out.println("=="+sum+"==");
 												sum++;
 												showGrid();
-												//Æ¥Åä³É¹¦´òÓ¡±í¸ñ
+												//åŒ¹é…æˆåŠŸæ‰“å°è¡¨æ ¼
 											}
 										}
 									}
@@ -151,9 +151,9 @@ public class GridGame {
 	public static void main(String[] args)
 	{
 		GridGame game=new GridGame();
-		//µ÷ÓÃ¹¹Ôìº¯ÊınewÒ»¸ö¶şÎ¬Êı×éÓÃÓÚ´æ·Å±í¸ñÊı¾İ
+		//è°ƒç”¨æ„é€ å‡½æ•°newä¸€ä¸ªäºŒç»´æ•°ç»„ç”¨äºå­˜æ”¾è¡¨æ ¼æ•°æ®
 		game.arrage();
-		System.out.println("³ÌĞò½áÊø");
+		System.out.println("ç¨‹åºç»“æŸ");
 	}
 }
 
