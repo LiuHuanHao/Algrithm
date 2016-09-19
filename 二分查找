@@ -1,0 +1,95 @@
+package haha;
+
+import java.util.Scanner;
+/*
+ * 把字符串的字符进行排序
+ * 			举例:"dacgebf"
+ * 			结果:"abcdefg"
+ * 分析:
+ * A:定义一个字符串
+ * B:把字符串转换为字符数组 
+ * C:把字符数组进行排序
+ * D:排序后的字符数组转成字符串
+ * E:输出最后的字符串
+ * 基本查找数组元素时无序的
+ * 二分查找数组元素有序
+ * 二分查找分析:
+ * A:定义最大索引，最小索引
+ * B:计算中间索引
+ * C:拿中间在索引的值和要查找的值进行比较
+ */
+
+import javafx.collections.ListChangeListener.Change;
+
+public class StudentTest {
+	public static void main(String[] args) {
+		String s="bacgedf";
+		System.out.println("排序前:"+s);
+		//把字符串转换为字符数组
+		char[] chs=s.toCharArray();
+		bubbleSort(chs);
+		//把排序后的数组转成字符串
+		String result=String.valueOf(chs);
+		//也可以用toString()转成字符串
+		System.out.println("result:"+result);
+		
+		//***************************************
+		int[] arr={11,22,33,44,55,66,77};
+		
+		int index=getIndex(arr,33);
+		System.out.println("index:"+index);
+		//假如这个元素不存在,死循环，需要再加一个结束判断
+		index=getIndex(arr,333);
+		System.out.println("index:"+index);
+		//先排序后查找改变了原始位置，不可以
+		
+		
+		
+	}
+	
+	public static int getIndex(int[] arr,int value)
+	{
+		int max=arr.length-1;
+		int min=0;
+		//计算中间 索引
+		int mid=(max+min/2);
+		while(arr[mid]!=value)  //当中间值为所要查找的值时退出并返回
+		{
+			if(arr[mid]>value)
+			{
+				max=mid-1;
+			}
+			else if(arr[mid]<value)
+			{
+				min=mid+1;
+			}
+			if(min>max)  //这一步是结束程序的操作
+			{
+				return -1;
+			}
+			mid=(max+min)/2;
+		}
+		return mid+1;
+	}
+	
+	
+	public static void bubbleSort(char[] chs)
+	{
+		for(int x=0;x<chs.length-1;x++)
+		{
+			for(int y=0;y<chs.length-1-x;y++)
+			{
+				if(chs[y]>chs[y+1])
+				{
+				char temp=chs[y];
+				chs[y]=chs[y+1];
+				chs[y+1]=temp;
+				}
+			}
+		}
+	}
+}
+
+
+
+
